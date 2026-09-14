@@ -1,30 +1,34 @@
-# VITyarthi Submission Checklist
+# Submission Checklist
 
-## Repository
-- [ ] Repository is Public on GitHub.
-- [ ] Submission URL is the repository root URL only.
-- [ ] `README.md` is at repository root.
-- [ ] `statement.md` is at repository root.
-- [ ] Source code, data and documentation are included.
-- [ ] No `/tree/main/` or `/blob/main/` URL is submitted.
+## Project
+- [x] Terminal executable
+- [x] Multiple Linear Regression
+- [x] 240 simulated records
+- [x] 80/20 split
+- [x] Model metrics
+- [x] Academic analysis
+- [x] Validation/error handling
+- [x] Modular source structure
 
-## Executability
-- [ ] Python 3.9+ is available on the evaluator machine.
-- [ ] `python main.py` starts the terminal application.
-- [ ] `python main.py --test` passes.
-- [ ] `python main.py --metrics` prints MAE, RMSE and R2.
-- [ ] `python main.py --example` completes without manual input.
+## Documentation
+- [x] README.md
+- [x] statement.md
+- [x] TESTING.md
+- [x] CLI_EXECUTION.md
+- [x] PROJECT_REPORT_CONTENT.md
+- [x] PROJECT_REPORT.pdf
+- [x] Architecture/workflow/UML-style diagrams
+- [x] Project file map
 
-## Report
-- [ ] Cover page completed with student details.
-- [ ] All required report sections are present.
-- [ ] Actual application screenshots are inserted.
-- [ ] Dataset is clearly identified as simulated.
-- [ ] ML model selection and evaluation methodology are explained.
-- [ ] Design diagrams are included.
-- [ ] Testing and limitations are documented.
+## GitHub
+- [ ] Repository is Public
+- [ ] `main.py` at repository root
+- [ ] `data/vit_student_dataset.csv` present
+- [ ] README renders correctly
+- [ ] Project can be downloaded and executed
+- [ ] Root repository URL submitted to VITyarthi
 
-## Final integrity check
-- [ ] Student has reviewed the source and can explain the implementation.
-- [ ] Claims in the report match the actual project.
-- [ ] No fabricated data, results, screenshots or development history are included.
+## VITyarthi
+- [ ] Upload/submit the Project Report PDF
+- [ ] Submit the GitHub root URL only
+- [ ] Verify the final repository before triggering evaluation

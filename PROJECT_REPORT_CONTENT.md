@@ -1,63 +1,78 @@
 # Project Report Content
 
-## 1. Introduction & Executive Summary
-Academic performance prediction enables educational stakeholders and students to identify academic risk early, set realistic milestone targets, and optimize time management. This project delivers a production-grade, browser-based analytics system tailored to the VIT Bhopal University assessment structure, applying Multiple Linear Regression (OLS) alongside automated regulatory rule evaluation.
+## Title
+Student Performance Prediction and Academic Analysis using Multiple Linear Regression
 
-## 2. Methodology & Model Architecture
-The system employs Multiple Linear Regression:
+## 1. Introduction
+This project presents a lightweight terminal-based AI/ML application for student academic analysis. The system combines academic indicators and a Multiple Linear Regression model to estimate a final performance score. It also calculates an academic score using the assessment structure implemented for this project and checks defined eligibility/pass conditions.
 
-$$\hat{y} = \beta_0 + \sum_{i=1}^{p} \beta_i x_i$$
+## 2. Problem Statement
+Academic information can be distributed across study habits, attendance, continuous assessment, internal tests and final examination performance. Students can benefit from a single workflow that converts these inputs into a performance estimate and an interpretable academic analysis.
 
-### Predictor Variables ($x_i$):
-1. **Study Hours ($x_1$)**: Daily self-study hours.
-2. **Attendance Percentage ($x_2$)**: Overall course attendance.
-3. **CAM Percentage ($x_3$)**: Continuous assessment score percentage.
-4. **Previous Final Score ($x_4$)**: Prior academic achievement.
-5. **CAT-1 Raw Mark ($x_5$)**: Continuous assessment test 1 score (/50).
-6. **CAT-2 Raw Mark ($x_6$)**: Continuous assessment test 2 score (/50).
-7. **TEE Raw Mark ($x_7$)**: Term-end examination score (/100).
+## 3. Objectives
+- Build an executable AI/ML project using Multiple Linear Regression.
+- Process a structured academic dataset.
+- Train and test the model using an 80/20 split.
+- Evaluate the model with MAE, RMSE and R².
+- Accept individual student inputs and generate a prediction.
+- Calculate academic contributions and defined pass checks.
+- Produce understandable recommendations.
+- Provide command-line execution without third-party packages.
 
-### Mathematical Optimization:
-Coefficients $\boldsymbol{\beta}$ are determined analytically using the Ordinary Least Squares (OLS) normal equations:
+## 4. Functional Requirements
+- Load the supplied CSV dataset.
+- Validate numerical inputs and ranges.
+- Train Multiple Linear Regression.
+- Predict a final score.
+- Calculate CAM, attendance, CAT-1, CAT-2 and TEE contributions.
+- Check attendance, TEE and raw-score conditions.
+- Generate recommendations.
+- Provide interactive and non-interactive CLI execution.
+- Report model evaluation metrics.
 
-$$\boldsymbol{\beta} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$$
+## 5. Non-Functional Requirements
+- Usability: simple terminal prompts and clear output.
+- Reliability: built-in validation and tests.
+- Maintainability: separated source modules.
+- Resource efficiency: standard-library implementation without external ML packages.
+- Portability: works with Python 3.9+ on common desktop operating systems.
+- Error handling: invalid numeric values are rejected with a clear message.
 
-Solved numerically via Gaussian elimination with partial pivoting in native JavaScript.
+## 6. System Architecture
+The architecture is organized into configuration, data loading, model, academic analysis, validation/recommendation, reporting and application orchestration modules.
 
-## 3. VIT Bhopal Academic Assessment Framework
-Conforming to the revised regulations dated 10 July 2026:
+## 7. Workflow
+Academic inputs are validated, the simulated dataset is loaded, the model is trained on 80% of the records, the student's predicted score is generated, the academic calculation is performed, eligibility/pass conditions are checked, and recommendations are printed.
 
-$$\text{Internal Marks (70)} = \text{CAM (35)} + \text{Att (5)} + \left(\frac{\text{CAT1}}{50} \times 15\right) + \left(\frac{\text{CAT2}}{50} \times 15\right)$$
+## 8. Dataset
+The repository contains 240 simulated records. Features include study hours, attendance, CAM percentage, previous marks, CAT-1, CAT-2 and TEE marks. The target is final score out of 100.
 
-$$\text{TEE Contribution (30)} = \frac{\text{TEE}}{100} \times 30$$
+## 9. Machine Learning Method
+The model is ordinary least-squares Multiple Linear Regression. The implementation solves the normal-equation system using Gauss-Jordan elimination with partial pivoting, avoiding external ML libraries.
 
-$$\text{Final Score (100)} = \text{Internal (70)} + \text{TEE (30)}$$
+## 10. Evaluation
+The 240 records are split into 192 training records and 48 test records. The measured results are:
+- MAE ≈ 1.13
+- RMSE ≈ 1.32
+- R² ≈ 0.9831
+- Baseline MAE ≈ 8.86
 
-### Mandatory Pass Constraints:
-1. **Attendance Threshold**: $\text{Attendance} \ge 75\%$.
-2. **TEE Minimum Floor**: $\text{TEE} \ge 40 / 100$.
-3. **Aggregate Raw Threshold**: $\text{CAT1} + \text{CAT2} + \text{TEE} \ge 80 / 200$.
+Because the dataset is simulated and the target is strongly related to the predictor variables, these metrics demonstrate implementation and evaluation rather than real-world model validity.
 
-## 4. Exam Target & Study Planning Heuristic
-- Minimum CAT-2 required for pass given CAT-1 and target TEE:
-  $$\text{Min CAT-2} = \max(0, 80 - \text{CAT1} - \text{TEE}_{\text{target}})$$
-  Feasible if $\text{Min CAT-2} \le 50$.
-- Minimum TEE required for pass given CAT-1 and CAT-2:
-  $$\text{Min TEE} = \max(40, 80 - \text{CAT1} - \text{CAT2})$$
-  Feasible if $\text{Min TEE} \le 100$.
-- Daily study hour allocation:
-  $$H_{\text{rec}} = \text{clamp}\left(2.0 + 2.5 \times (\Delta_{\text{CAT2}} + \Delta_{\text{TEE}}) + 3.0 \times \Delta_{\text{desired}},\; 2.0,\; 8.0\right)$$
+## 11. Academic Analysis
+The application converts raw assessment values into weighted contributions, produces an internal total and TEE contribution, calculates a final score and checks the project-defined attendance, TEE and raw-score conditions.
 
-## 5. Experimental Results & Model Evaluation
-The dataset consists of 240 simulated records partitioned into 192 training records (80%) and 48 testing records (20% holdout).
+## 12. Implementation
+The code is divided into small Python modules. `main.py` handles command-line options. `data_loader.py` reads the CSV. `regression.py` implements the ML model. `academic.py` performs academic calculations. `analysis.py` validates inputs and creates recommendations. `reporting.py` formats results. `app.py` coordinates interactive and example workflows.
 
-| Metric | Linear Regression | Naive Mean Baseline | Improvement |
-|---|---|---|---|
-| **Mean Absolute Error (MAE)** | **1.13 marks** | 8.86 marks | **87.2% reduction** |
-| **Root Mean Squared Error (RMSE)** | **1.32 marks** | 10.15 marks | **87.0% reduction** |
-| **Coefficient of Determination ($R^2$)** | **0.983** | 0.000 | **High explained variance** |
+## 13. Testing
+Automated tests verify the 240-row dataset, 80/20 split, regression metrics, baseline comparison and academic calculation. The interactive, metrics and example modes were manually executed in Windows PowerShell.
 
-## 6. Implementation Integrity
-- Implemented as a self-contained Python terminal application in `main.py`.
-- Uses only Python standard-library modules; no external packages, npm packages, server processes, or database are required.
-- Designed for reproducible command-line execution on a Python 3.9+ environment.
+## 14. Limitations
+The dataset is synthetic. The model is not trained on real VIT student records. Academic rules represented in the prototype should not be interpreted as an official university result engine. No student credentials are collected.
+
+## 15. Future Enhancements
+Possible extensions include a larger validated dataset, cross-validation, additional regression models, explainability, persistent student profiles and a database layer, subject-wise analytics and integration with authorized institutional APIs if available.
+
+## 16. Conclusion
+The project demonstrates an end-to-end introductory AI/ML workflow in a command-line executable form. It combines data processing, regression, evaluation, prediction and interpretable academic analysis in a modular implementation.
