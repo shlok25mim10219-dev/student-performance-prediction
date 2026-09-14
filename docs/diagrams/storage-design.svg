@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+<rect width="100%" height="100%" fill="white"/>
+<text x="50" y="55" font-family="Arial" font-size="28" font-weight="bold">Storage Design</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#333"/></marker></defs>
+<rect x="100" y="140" width="220" height="70" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+<text x="210.0" y="182.0" text-anchor="middle" font-family="Arial" font-size="18">vit_student_dataset.csv</text>
+<rect x="500" y="140" width="220" height="70" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+<text x="610.0" y="182.0" text-anchor="middle" font-family="Arial" font-size="18">CSV Reader</text>
+<rect x="500" y="340" width="220" height="70" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+<text x="610.0" y="382.0" text-anchor="middle" font-family="Arial" font-size="18">In-Memory Records</text>
+<rect x="500" y="540" width="220" height="70" rx="8" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+<text x="610.0" y="582.0" text-anchor="middle" font-family="Arial" font-size="18">Regression / Analysis</text>
+<line x1="320" y1="175" x2="500" y2="175" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="610" y1="210" x2="610" y2="340" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="610" y1="410" x2="610" y2="540" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
