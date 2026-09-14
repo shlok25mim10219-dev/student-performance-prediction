@@ -111,9 +111,3 @@ Double-click `run_cli.bat` to start the interactive terminal application.
 
 
 
-### Run model evaluation
-
-```bash
-python main.py --metrics
-```
-
