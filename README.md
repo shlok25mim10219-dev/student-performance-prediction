@@ -109,49 +109,11 @@ Double-click `run_cli.bat` to start the interactive terminal application.
     - Never requests or stores student login credentials.
 
 
-## Command-Line Execution (Required Evaluation Path)
 
-The project is a standalone terminal application in `main.py`. It uses only Python's standard library; no pip packages, npm, server, database, or GUI setup is required.
-
-### Requirements
-- Python 3.9 or newer
-- A terminal / Command Prompt / PowerShell
-
-### Run interactively
-
-From the repository root:
-
-```bash
-python main.py
-```
-
-The program loads the supplied 240-record simulated dataset, trains Multiple Linear Regression with an 80/20 split, accepts student academic inputs, predicts the final score, calculates the academic assessment breakdown, checks eligibility/pass conditions, and prints recommendations.
-
-### Run the example without prompts
-
-```bash
-python main.py --example
-```
 
 ### Run model evaluation
 
 ```bash
 python main.py --metrics
 ```
-
-### Run validation tests
-
-```bash
-python main.py --test
-```
-
-### Run with command-line arguments
-
-```bash
-python main.py --study 5 --attendance 86 --cam 78 --previous 72 --cat1 38 --cat2 40 --tee 72
-```
-
-### Windows shortcut
-
-Double-clicking `run_cli.bat` starts the interactive terminal application, but the recommended evaluator command is `python main.py`.
 
